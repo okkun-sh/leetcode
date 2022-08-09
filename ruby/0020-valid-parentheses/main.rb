@@ -1,20 +1,20 @@
-# @param {String} s
+# @param {String}
 # @return {Boolean}
 def is_valid(s)
   ary = []
   s.chars.each do |str|
-    puts ary
-    if str == "(" || str == "{" || str == "["
+    case str
+    when "(", "{", "["
       ary.push str
-    elsif str == ")"
+    when ")"
       return false if ary.pop != "(" 
-    elsif str == "}"
+    when "}"
       return false if ary.pop != "{"
-    elsif str == "]"
+    when "]"
       return false if ary.pop != "["
     end
   end
-  true
+  ary.length === 0 ? true : false
 end
 
 require 'minitest/autorun'
